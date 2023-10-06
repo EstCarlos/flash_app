@@ -12,6 +12,22 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Hero(
+            tag: 'logo',
+            child: Container(
+                child: Image.asset('images/rayo2.png',
+                height: 200,
+                )
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

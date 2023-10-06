@@ -1,5 +1,7 @@
+import 'package:flash_app/button.dart';
 import 'package:flash_app/registration_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class WelcomeScreen extends StatefulWidget {
   WelcomeScreen({super.key});
@@ -54,51 +56,44 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                     child: Image.asset('images/rayo2.png', height: animation.value * 100),
                 ),
                 ),
-                Text('Flash Chat',
-                style: TextStyle(
-                  fontSize: 45.0,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.black54
-                ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 48.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(50),
-                child: MaterialButton(
-                  onPressed: (){},
-                  minWidth: 200.0,
-                  height: 50.0,
-                  child: Text('Log In'),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(50),
-                child: MaterialButton(
-                  onPressed: (){
-                    Navigator.pushNamed(context, RegistrationScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 50.0,
-                  child: Text('Register'),
-                ),
-              ),
-            )
+                AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'Flash Chat',
+                      textStyle: const TextStyle(
+                          fontSize: 45.0,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.black54
+                      ),
+                      speed: const Duration(milliseconds: 200),
+                    ),
+                  ],
+                  totalRepeatCount: 1,
+                  pause: const Duration(milliseconds: 1000),
+                    ),
+
           ],
         ),
+            SizedBox(
+                height: 48.0
+            ),
+
+            Button(text: 'Log In',
+              color: Colors.lightBlueAccent,
+              onPressed: () {
+
+              },
+            ),
+            Button(
+              text: 'Register',
+              color: Colors.blueAccent,
+              onPressed: () {
+                Navigator.pushNamed(context, RegistrationScreen.id);
+              },
+            ),
+      ]
       ),
+      )
     );
   }
 }

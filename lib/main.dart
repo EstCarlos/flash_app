@@ -6,7 +6,7 @@ void main() => runApp(FlashChat());
 
 class FlashChat extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+    Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
         textTheme: TextTheme(
@@ -16,12 +16,30 @@ class FlashChat extends StatelessWidget {
         )
       ),
       title: 'Material App',
+      debugShowCheckedModeBanner: false,
       home: WelcomeScreen(),
       initialRoute: WelcomeScreen.id,
+      //
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         RegistrationScreen.id: (context) => RegistrationScreen(),
       },
+      onUnknownRoute: (RouteSettings settings){
+        return MaterialPageRoute(
+          settings: settings,
+            builder: (BuildContext context) => ErrorPage(),
+
+        );
+      },
     );
+  }
+}
+
+class ErrorPage extends StatelessWidget {
+  const ErrorPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text('404 page not found');
   }
 }
